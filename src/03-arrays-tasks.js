@@ -418,8 +418,9 @@ function findAllOccurrences(arr, item) {
  *    [1, 2, 3, 4, 5]                   => '1,2,3,4,5'
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  // throw new Error('Not implemented');
+  return arr.join();
 }
 
 /**
@@ -448,8 +449,19 @@ function toStringList(/* arr */) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
+function sortCitiesArray(arr) {
+  return arr.sort((x, y) => {
+    const countryA = x.country.toUpperCase();
+    const countryB = y.country.toUpperCase();
+    const cityA = x.city.toUpperCase();
+    const cityB = y.city.toUpperCase();
+
+    if (countryA === countryB) {
+      // eslint-disable-next-line no-nested-ternary
+      return cityA === cityB ? 0 : cityA > cityB ? 1 : -1;
+    }
+    return countryA > countryB ? 1 : -1;
+  });
 }
 
 /**
