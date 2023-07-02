@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* ********************************************************************************************
  *                                                                                            *
  * Please read the following tutorial before implementing tasks:                               *
@@ -597,8 +598,9 @@ function group(array, keySelector, valueSelector) {
  *   [[1, 2], [3, 4], [5, 6]], (x) => x     =>   [ 1, 2, 3, 4, 5, 6 ]
  *   ['one','two','three'], (x) => x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
-function selectMany(/* arr, childrenSelector */) {
-  throw new Error('Not implemented');
+function selectMany(arr, childrenSelector) {
+  // throw new Error('Not implemented');
+  return arr.flatMap(childrenSelector);
 }
 
 /**
@@ -613,8 +615,14 @@ function selectMany(/* arr, childrenSelector */) {
  *   ['one','two','three'], [2]       => 'three'  (arr[2])
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
-function getElementByIndexes(/* arr, indexes */) {
-  throw new Error('Not implemented');
+function getElementByIndexes(arr, indexes) {
+  // throw new Error('Not implemented');
+  let element = arr;
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < indexes.length; i++) {
+    element = element[indexes[i]];
+  }
+  return element;
 }
 
 /**
@@ -635,8 +643,14 @@ function getElementByIndexes(/* arr, indexes */) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  // throw new Error('Not implemented');
+  const length1 = arr.length;
+  const midle = Math.floor(length1 / 2);
+  if (length1 % 2 === 0) {
+    return arr.slice(midle).concat(arr.slice(0, midle));
+  }
+  return arr.slice(midle + 1).concat(arr[midle], arr.slice(0, midle));
 }
 
 module.exports = {
